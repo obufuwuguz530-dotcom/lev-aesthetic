@@ -164,17 +164,17 @@ const App = () => {
   return (
     <div className="min-h-screen bg-background text-white selection:bg-accent-gold/30">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-background/90 backdrop-blur-md py-4 border-b border-white/5' : 'bg-transparent py-8'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-background/90 backdrop-blur-md py-4 border-b border-white/5' : 'bg-transparent py-6 md:py-8'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center gap-6"
+            className="flex items-center gap-3 md:gap-6"
           >
-            <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-20 md:h-28 w-auto object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]" />
-            <div className="flex flex-col border-l border-accent-gold/40 pl-6 ml-2">
-              <span className="font-serif text-xl md:text-4xl tracking-widest gold-text-gradient font-bold leading-tight uppercase text-shadow-glow">DR. LEVCHENKO</span>
-              <span className="font-serif text-[10px] md:text-xs tracking-[0.4em] text-white/40 uppercase">AESTHETIC MEDICINE</span>
+            <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-12 md:h-28 w-auto object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]" />
+            <div className="flex flex-col border-l border-accent-gold/40 pl-3 md:pl-6">
+              <span className="font-serif text-lg md:text-4xl tracking-widest gold-text-gradient font-bold leading-tight uppercase text-shadow-glow">DR. LEVCHENKO</span>
+              <span className="font-serif text-[8px] md:text-xs tracking-[0.4em] text-white/40 uppercase">AESTHETIC MEDICINE</span>
             </div>
           </motion.div>
 
@@ -195,8 +195,8 @@ const App = () => {
             <a href="#contacts" className="hover:text-accent-gold transition-all duration-300">КОНТАКТЫ</a>
           </div>
 
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
+          <button className="md:hidden text-accent-gold p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
       </nav>
@@ -205,15 +205,19 @@ const App = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            className="fixed inset-0 z-40 bg-background pt-24 px-10 flex flex-col gap-8 md:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-xl pt-32 px-10 flex flex-col gap-8 md:hidden text-center"
           >
-            <button onClick={() => { setActiveTab('landing'); setIsMenuOpen(false); }} className="text-2xl font-serif uppercase tracking-widest">Главная</button>
-            <button onClick={() => { setActiveTab('academy'); setIsMenuOpen(false); }} className="text-2xl font-serif uppercase tracking-widest">Обучение</button>
-            <a href="#services" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif uppercase tracking-widest">Услуги</a>
-            <a href="#contacts" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif uppercase tracking-widest">Контакты</a>
+            <button onClick={() => { setActiveTab('landing'); setIsMenuOpen(false); }} className="text-3xl font-serif uppercase tracking-[0.2em] text-white hover:text-accent-gold transition-colors">Главная</button>
+            <button onClick={() => { setActiveTab('academy'); setIsMenuOpen(false); }} className="text-3xl font-serif uppercase tracking-[0.2em] text-white hover:text-accent-gold transition-colors">Обучение</button>
+            <a href="#services" onClick={() => setIsMenuOpen(false)} className="text-3xl font-serif uppercase tracking-[0.2em] text-white hover:text-accent-gold transition-colors">Услуги</a>
+            <a href="#contacts" onClick={() => setIsMenuOpen(false)} className="text-3xl font-serif uppercase tracking-[0.2em] text-white hover:text-accent-gold transition-colors">Контакты</a>
+
+            <div className="mt-auto pb-20 flex justify-center gap-8">
+              <a href="https://t.me/levchenko_ekaterina" className="text-accent-gold uppercase tracking-widest text-sm">Telegram</a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -233,10 +237,10 @@ const App = () => {
                   initial={{ scale: 1.1, opacity: 0 }}
                   animate={{ scale: 1, opacity: 0.6 }}
                   transition={{ duration: 2 }}
-                  className="w-full h-full bg-cover bg-[center_15%]"
+                  className="w-full h-full bg-cover bg-[center_25%] md:bg-[center_15%]"
                   style={{ backgroundImage: "url('/images/hero.jpg')" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-background via-background/60 md:via-background/40 to-transparent" />
               </div>
 
               <div className="container mx-auto px-6 relative z-10">
@@ -244,29 +248,29 @@ const App = () => {
                   variants={staggerContainer}
                   initial="initial"
                   animate="animate"
-                  className="max-w-3xl ml-auto text-right flex flex-col items-end"
+                  className="max-w-3xl ml-auto text-center md:text-right flex flex-col items-center md:items-end"
                 >
                   <motion.h1
                     variants={fadeIn}
-                    className="text-6xl md:text-8xl font-serif mb-4 leading-tight"
+                    className="text-5xl sm:text-6xl md:text-8xl font-serif mb-4 md:mb-6 leading-tight"
                   >
-                    ЕКАТЕРИНА <br />
+                    ЕКАТЕРИНА <br className="hidden sm:block" />
                     <span className="gold-text-gradient">ЛЕВЧЕНКО</span>
                   </motion.h1>
                   <motion.p
                     variants={fadeIn}
-                    className="text-xl md:text-2xl font-light tracking-wide text-white/70 mb-12 max-w-xl"
+                    className="text-lg md:text-2xl font-light tracking-wide text-white/70 mb-8 md:mb-12 max-w-xl"
                   >
                     Эстетическая косметология высшего уровня и наставничество для профессионалов.
                   </motion.p>
                   <motion.div
                     variants={fadeIn}
-                    className="flex flex-col sm:flex-row gap-6 justify-end w-full"
+                    className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center md:justify-end w-full"
                   >
-                    <a href="#services" className="btn-gold text-center">УСЛУГИ</a>
+                    <a href="#services" className="btn-gold text-center py-4 px-10">УСЛУГИ</a>
                     <button
                       onClick={() => setActiveTab('academy')}
-                      className="px-8 py-3 border border-white/20 text-white hover:border-accent-gold transition-all duration-500 tracking-[0.2em] font-serif uppercase"
+                      className="px-10 py-4 border border-white/20 text-white hover:border-accent-gold transition-all duration-500 tracking-[0.2em] font-serif uppercase text-sm md:text-base"
                     >
                       ОБУЧЕНИЕ
                     </button>
@@ -276,36 +280,32 @@ const App = () => {
             </section>
 
             {/* About Section */}
-            <section className="py-24 bg-background">
+            <section className="py-20 md:py-32 bg-background">
               <div className="container mx-auto px-6">
-                <div className="max-w-4xl mx-auto text-center space-y-12">
+                <div className="max-w-4xl mx-auto text-center space-y-8 md:space-y-12">
                   <motion.div
                     whileInView={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     viewport={{ once: true }}
-                    className="space-y-8"
+                    className="space-y-6 md:space-y-8"
                   >
-                    <h2 className="text-4xl md:text-5xl font-serif">Про Екатерину</h2>
-                    <p className="text-xl text-white/70 leading-relaxed font-light">
+                    <h2 className="text-3xl md:text-5xl font-serif uppercase tracking-widest">Про Екатерину</h2>
+                    <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
                       Более 10 лет опыта в сфере эстетической медицины. Моя философия базируется на
                       <span className="text-accent-gold"> "Natural Beauty & Luxury Care"</span>.
                       Я верю, что истинная красота — это сохранение индивидуальности через деликатное вмешательство и профессиональный уход.
                     </p>
-                    <p className="text-xl text-white/70 leading-relaxed font-light">
+                    <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
                       Каждый пациент получает персонализированный план преображения, основанный на инновационных методиках и премиальных препаратах.
                     </p>
-                    <div className="flex justify-center gap-16 pt-8">
+                    <div className="grid grid-cols-2 md:flex md:justify-center gap-8 md:gap-16 pt-8">
                       <div className="text-center">
-                        <div className="text-4xl font-serif gold-text-gradient">5000+</div>
-                        <div className="text-xs uppercase tracking-widest text-white/40 mt-1">Клиентов</div>
+                        <div className="text-3xl md:text-4xl font-serif gold-text-gradient">5000+</div>
+                        <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1">Клиентов</div>
                       </div>
-                      <div className="text-center">
-                        <div className="text-4xl font-serif gold-text-gradient">15+</div>
-                        <div className="text-xs uppercase tracking-widest text-white/40 mt-1">Сертификатов</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-4xl font-serif gold-text-gradient">24/7</div>
-                        <div className="text-xs uppercase tracking-widest text-white/40 mt-1">Забота</div>
+                      <div className="text-center border-l md:border-l-0 border-white/10 md:pl-0 pl-8">
+                        <div className="text-3xl md:text-4xl font-serif gold-text-gradient">10+</div>
+                        <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1">Лет опыта</div>
                       </div>
                     </div>
                   </motion.div>
@@ -314,53 +314,55 @@ const App = () => {
             </section>
 
             {/* Services Section */}
-            <section id="services" className="py-24 bg-white/[0.02]">
-              <div className="container mx-auto px-6 text-center mb-16">
-                <motion.h2
-                  whileInView={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className="text-4xl font-serif mb-4"
-                >
-                  Наши Услуги
-                </motion.h2>
-                <div className="w-24 h-[1px] bg-accent-gold mx-auto" />
-              </div>
+            <section id="services" className="py-20 md:py-32 bg-[#0a0a0a]">
+              <div className="container mx-auto px-6">
+                <div className="text-center mb-16 md:mb-20">
+                  <span className="text-accent-gold text-xs md:text-sm uppercase tracking-[0.5em] mb-4 block">Направления</span>
+                  <h2 className="text-4xl md:text-6xl font-serif uppercase tracking-[0.2em]">Услуги</h2>
+                </div>
 
-              <div className="container mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                {serviceCategories.map((category, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: 30 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    onClick={() => setSelectedService(category)}
-                    className="glass-card overflow-hidden group gold-glow cursor-pointer transition-transform duration-300 hover:-translate-y-2"
-                  >
-                    <div className="h-64 overflow-hidden relative">
-                      <img
-                        src={category.image}
-                        alt={category.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75 group-hover:brightness-100"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                      <h3 className="absolute bottom-4 left-6 text-lg font-serif tracking-tight">{category.title}</h3>
-                    </div>
-                    <div className="p-8">
-                      <ul className="space-y-4 text-left">
-                        {category.items.map((item, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/50 group-hover:text-white/80 transition-colors">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold/40" />
-                            <span className="text-sm font-light tracking-wide">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <button className="mt-8 text-xs uppercase tracking-[0.2em] font-serif text-accent-gold flex items-center gap-2 group/btn">
-                        Подробнее <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
+                  {serviceCategories.map((category, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ y: -10 }}
+                      className="group cursor-pointer"
+                      onClick={() => {
+                        setSelectedService(category);
+                        setOpenAccordion(null);
+                      }}
+                    >
+                      <div className="relative aspect-[3/4] overflow-hidden mb-6 gold-border">
+                        <img
+                          src={category.image}
+                          alt={category.title}
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[50%] group-hover:grayscale-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                        <div className="absolute bottom-6 left-6 right-6">
+                          <h3 className="text-lg md:text-xl font-serif text-white tracking-widest uppercase mb-2 group-hover:text-accent-gold transition-colors">
+                            {category.title}
+                          </h3>
+                          <div className="h-px w-0 bg-accent-gold transition-all duration-500 group-hover:w-full" />
+                        </div>
+                      </div>
+
+                      <div className="px-2">
+                        <ul className="space-y-2 md:space-y-4 text-left">
+                          {category.items.slice(0, 3).map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-white/40 group-hover:text-white/60 transition-colors">
+                              <span className="w-1 h-1 rounded-full bg-accent-gold/40 mt-2 flex-shrink-0" />
+                              <span className="text-[10px] md:text-xs uppercase tracking-wider font-light line-clamp-1">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <button className="mt-6 text-[10px] uppercase tracking-[0.3em] font-serif text-accent-gold flex items-center gap-2 group/btn">
+                          Подробнее <ChevronRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </section>
           </motion.main>
@@ -371,10 +373,10 @@ const App = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="pt-24"
+            className="pt-20 md:pt-24"
           >
             {/* Academy Hero */}
-            <section className="relative py-32 overflow-hidden">
+            <section className="relative py-24 md:py-32 overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <div
                   className="w-full h-full bg-cover bg-fixed bg-center opacity-30"
@@ -385,11 +387,11 @@ const App = () => {
 
               <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div variants={fadeIn} initial="initial" animate="animate">
-                  <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-[0.3em]">
+                  <h1 className="text-4xl md:text-7xl font-serif mb-6 tracking-[0.2em] md:tracking-[0.3em] leading-tight">
                     ACADEMY BY <br />
-                    <span className="gold-text-gradient">L.E.V.</span>
+                    <span className="gold-text-gradient uppercase">L.E.V.</span>
                   </h1>
-                  <p className="max-w-2xl mx-auto text-white/60 mb-12 font-light text-lg">
+                  <p className="max-w-2xl mx-auto text-white/60 mb-8 md:mb-12 font-light text-base md:text-lg px-4">
                     Повышение квалификации для работающих врачей и наставничество для тех, кто хочет масштабировать свой медицинский бизнес.
                   </p>
                 </motion.div>
@@ -397,21 +399,21 @@ const App = () => {
             </section>
 
             {/* Programs */}
-            <section className="py-24 container mx-auto px-6">
-              <div className="grid md:grid-cols-3 gap-12">
+            <section className="py-20 md:py-24 container mx-auto px-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 {[
                   {
-                    icon: <Award className="text-accent-gold" size={40} />,
+                    icon: <Award className="text-accent-gold" size={32} />,
                     title: "Для профи",
                     desc: "Авторские курсы по сложной контурной пластике и аппаратным техникам. Постановка руки."
                   },
                   {
-                    icon: <BookOpen className="text-accent-gold" size={40} />,
+                    icon: <BookOpen className="text-accent-gold" size={32} />,
                     title: "Онлайн курсы",
                     desc: "Теоретическая база и видео-атласы анатомии для доступа из любой точки мира."
                   },
                   {
-                    icon: <ShieldCheck className="text-accent-gold" size={40} />,
+                    icon: <ShieldCheck className="text-accent-gold" size={32} />,
                     title: "Наставничество",
                     desc: "Индивидуальная программа: от личного бренда до открытия собственной клиники."
                   }
@@ -419,25 +421,25 @@ const App = () => {
                   <motion.div
                     key={i}
                     whileHover={{ y: -10 }}
-                    className="p-10 border border-white/5 bg-white/[0.02] flex flex-col items-center text-center group transition-all duration-500 hover:border-accent-gold/20"
+                    className="p-8 md:p-10 border border-white/5 bg-white/[0.02] flex flex-col items-center text-center group transition-all duration-500 hover:border-accent-gold/20"
                   >
-                    <div className="mb-8 p-6 rounded-full bg-white/5 group-hover:bg-accent-gold/10 transition-colors">
+                    <div className="mb-6 md:mb-8 p-6 rounded-full bg-white/5 group-hover:bg-accent-gold/10 transition-colors">
                       {item.icon}
                     </div>
-                    <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
-                    <p className="text-white/50 font-light leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl md:text-2xl font-serif mb-4 uppercase tracking-widest">{item.title}</h3>
+                    <p className="text-white/50 font-light text-sm md:text-base leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </section>
 
             {/* CTA Academy */}
-            <section className="py-24 bg-accent-gold/5 border-y border-accent-gold/10">
+            <section className="py-20 md:py-24 bg-accent-gold/5 border-y border-accent-gold/10">
               <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl font-serif mb-8">Готовы выйти на новый уровень?</h2>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button className="btn-gold">ЗАПИСАТЬСЯ НА КУРС</button>
-                  <button className="px-8 py-3 bg-white text-background font-serif uppercase tracking-widest hover:bg-accent-gold transition-colors">Консультация</button>
+                <h2 className="text-3xl md:text-4xl font-serif mb-8 uppercase tracking-widest">Готовы выйти на новый уровень?</h2>
+                <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+                  <button className="btn-gold py-4 px-10">ЗАПИСАТЬСЯ НА КУРС</button>
+                  <button className="px-10 py-4 bg-white text-background font-serif uppercase tracking-widest hover:bg-accent-gold transition-colors text-sm">Консультация</button>
                 </div>
               </div>
             </section>
@@ -446,68 +448,69 @@ const App = () => {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer id="contacts" className="py-24 border-t border-white/5">
+      <footer id="contacts" className="py-20 md:py-24 border-t border-white/5">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 items-start">
-            <div className="col-span-2 space-y-10">
-              <div className="flex items-center gap-6">
-                <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-20 w-auto" />
-                <span className="font-serif text-3xl tracking-[0.3em] gold-text-gradient font-bold">L.E.V. COSMETOLOGY</span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
+            <div className="md:col-span-2 space-y-8 md:space-y-10">
+              <div className="flex items-center gap-4 md:gap-6">
+                <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-16 md:h-20 w-auto" />
+                <span className="font-serif text-2xl md:text-3xl tracking-[0.2em] md:tracking-[0.3em] gold-text-gradient font-bold uppercase">L.E.V. COSMETOLOGY</span>
               </div>
-              <p className="text-white/40 max-w-sm font-light">
+              <p className="text-white/40 max-w-sm font-light text-sm">
                 Премиальное качество процедур и профессиональный подход в самом сердце города.
               </p>
               <div className="flex gap-6">
-                <a href="https://t.me/levchenko_ekaterina" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-accent-gold transition-all uppercase tracking-[0.2em] text-xs">
+                <a href="https://t.me/levchenko_ekaterina" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-accent-gold transition-all uppercase tracking-[0.2em] text-[10px]">
                   Telegram
                 </a>
               </div>
             </div>
 
             <div className="space-y-6">
-              <h4 className="font-serif text-sm tracking-widest mb-8 uppercase">Контакты</h4>
+              <h4 className="font-serif text-xs md:text-sm tracking-[0.3em] mb-6 md:mb-8 uppercase font-bold text-accent-gold">Контакты</h4>
               <div className="flex items-center gap-4 text-white/60">
-                <Phone size={18} className="text-accent-gold" />
+                <Phone size={16} className="text-accent-gold" />
                 <a href="tel:+79270067979" className="text-sm hover:text-white transition-colors">+7 927 006-79-79</a>
               </div>
               <div className="flex items-start gap-4 text-white/60">
-                <MapPin size={18} className="text-accent-gold mt-1" />
-                <span className="text-sm leading-loose">
-                  г. Самара, Бизнес-центр Ф-45,<br />
-                  ул. Аэродромная 45а, 6 этаж, 615 кабинет
+                <MapPin size={16} className="text-accent-gold mt-1" />
+                <span className="text-sm leading-relaxed">
+                  г. Самара, БЦ Ф-45,<br />
+                  ул. Аэродромная 45а, 615 каб.
                 </span>
               </div>
             </div>
 
             <div className="space-y-6">
-              <h4 className="font-serif text-sm tracking-widest mb-8 uppercase">Social</h4>
-              <p className="text-accent-gold text-sm tracking-widest uppercase">@dr.levchenkoe</p>
+              <h4 className="font-serif text-xs md:text-sm tracking-[0.3em] mb-6 md:mb-8 uppercase font-bold text-accent-gold">Social</h4>
+              <p className="text-accent-gold text-sm tracking-[0.2em] font-medium uppercase">@dr.levchenkoe</p>
             </div>
           </div>
 
-          <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/20 text-[10px] uppercase tracking-[0.3em]">© 2026 Levchenko Aesthetic. All rights reserved.</p>
-            <p className="text-white/20 text-[10px] uppercase tracking-[0.3em]">Designed for Excellence</p>
+          <div className="mt-16 md:mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+            <p className="text-white/20 text-[8px] md:text-[10px] uppercase tracking-[0.3em]">© 2026 Levchenko Aesthetic. All rights reserved.</p>
+            <p className="text-white/20 text-[8px] md:text-[10px] uppercase tracking-[0.3em]">Designed for Excellence</p>
           </div>
         </div>
       </footer>
       {/* Service Modal */}
       <AnimatePresence>
         {selectedService && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedService(null)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+              className="absolute inset-0 bg-black/95 backdrop-blur-xl"
             />
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#0f0f0f] gold-border p-6 sm:p-10 overflow-hidden max-h-[90vh] flex flex-col"
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '100%', opacity: 0 }}
+              className="relative w-full max-w-2xl bg-[#111] gold-border p-6 sm:p-10 overflow-hidden max-h-[95vh] sm:max-h-[90vh] flex flex-col rounded-t-3xl sm:rounded-none"
             >
+              <div className="w-12 h-1 bg-white/10 rounded-full mx-auto mb-6 sm:hidden" />
               <button
                 onClick={() => setSelectedService(null)}
                 className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors p-2"
@@ -515,13 +518,13 @@ const App = () => {
                 <X size={24} />
               </button>
 
-              <div className="mb-8">
-                <span className="text-accent-gold text-xs uppercase tracking-[0.4em] font-medium block mb-2">Прайс-лист</span>
-                <h2 className="text-3xl sm:text-4xl font-serif text-white">{selectedService.title}</h2>
+              <div className="mb-6 md:mb-8">
+                <span className="text-accent-gold text-[10px] uppercase tracking-[0.4em] font-medium block mb-2 px-1">Прайс-лист</span>
+                <h2 className="text-2xl sm:text-4xl font-serif text-white uppercase tracking-wider">{selectedService.title}</h2>
               </div>
 
-              <div className="overflow-y-auto pr-4 custom-scrollbar flex-1 mb-8">
-                <div className="space-y-6">
+              <div className="overflow-y-auto pr-2 custom-scrollbar flex-1 mb-8">
+                <div className="space-y-4 md:space-y-6">
                   {selectedService.isAccordion ? (
                     selectedService.details.map((item, i) => (
                       <div key={i} className="border-b border-white/5 pb-4">
@@ -530,11 +533,11 @@ const App = () => {
                           className="w-full flex justify-between items-center group/acc"
                         >
                           <div className="text-left py-2">
-                            <h3 className="text-accent-gold font-serif text-xl font-semibold mb-1">{item.name}</h3>
-                            <span className="text-white/40 text-xs uppercase tracking-widest">{item.price}</span>
+                            <h3 className="text-accent-gold font-serif text-lg md:text-xl font-semibold mb-1 uppercase tracking-wide">{item.name}</h3>
+                            <span className="text-white/40 text-[10px] uppercase tracking-widest">{item.price}</span>
                           </div>
                           <div className="text-accent-gold/50 group-hover/acc:text-accent-gold transition-colors">
-                            {openAccordion === i ? <Minus size={20} /> : <Plus size={20} />}
+                            {openAccordion === i ? <Minus size={18} /> : <Plus size={18} />}
                           </div>
                         </button>
                         <AnimatePresence>
@@ -545,9 +548,9 @@ const App = () => {
                               exit={{ height: 0, opacity: 0 }}
                               className="overflow-hidden"
                             >
-                              <ul className="pt-4 pb-6 space-y-4">
+                              <ul className="pt-4 pb-4 space-y-3">
                                 {item.description.map((line, idx) => (
-                                  <li key={idx} className="flex gap-4 text-white/60 text-sm font-light leading-relaxed">
+                                  <li key={idx} className="flex gap-3 text-white/60 text-xs md:text-sm font-light leading-relaxed">
                                     <span className="w-1.5 h-1.5 rounded-full bg-accent-gold/40 mt-1.5 flex-shrink-0" />
                                     {line}
                                   </li>
@@ -560,26 +563,26 @@ const App = () => {
                     ))
                   ) : (
                     selectedService.details?.map((item, i) => (
-                      <div key={i} className="flex justify-between items-start gap-4 border-b border-white/5 pb-4 group">
-                        <span className="text-white/70 text-sm sm:text-base font-light group-hover:text-white transition-colors">{item.name}</span>
-                        <span className="text-accent-gold font-serif text-2xl font-semibold whitespace-nowrap">{item.price}</span>
+                      <div key={i} className="flex justify-between items-center gap-4 border-b border-white/5 pb-4 group">
+                        <span className="text-white/70 text-sm md:text-base font-light group-hover:text-white transition-colors uppercase tracking-wide">{item.name}</span>
+                        <span className="text-accent-gold font-serif text-xl md:text-2xl font-semibold whitespace-nowrap">{item.price}</span>
                       </div>
                     ))
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10 mt-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 pt-4 border-t border-white/10 mt-auto">
                 <a
                   href="https://mst.link/levchenko_ekaterina3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gold flex items-center justify-center py-4 text-sm tracking-[0.2em] font-medium"
+                  className="btn-gold flex items-center justify-center py-4 text-xs tracking-[0.2em] font-medium uppercase"
                 >
                   ЗАПИСАТЬСЯ
                 </a>
                 <button
-                  className="px-8 py-4 border border-white/20 text-white hover:border-accent-gold transition-all duration-500 tracking-[0.2em] text-sm font-medium uppercase"
+                  className="px-8 py-4 border border-white/20 text-white hover:border-accent-gold transition-all duration-500 tracking-[0.2em] text-xs font-medium uppercase"
                 >
                   ЗАДАТЬ ВОПРОС
                 </button>
