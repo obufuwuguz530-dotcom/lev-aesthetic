@@ -173,8 +173,8 @@ const App = () => {
           >
             <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-12 md:h-28 w-auto object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]" />
             <div className="flex flex-col border-l border-accent-gold/40 pl-3 md:pl-6">
-              <span className="font-serif text-lg md:text-4xl tracking-widest gold-text-gradient font-bold leading-tight uppercase text-shadow-glow">ДОКТОР ЛЕВЧЕНКО</span>
-              <span className="font-serif text-[8px] md:text-xs tracking-[0.4em] text-white/40 uppercase">ЭСТЕТИЧЕСКАЯ МЕДИЦИНА</span>
+              <span className="font-serif text-base md:text-2xl tracking-widest gold-text-gradient font-bold leading-tight uppercase text-shadow-glow">ДОКТОР ЛЕВЧЕНКО</span>
+              <span className="font-serif text-[7px] md:text-[10px] tracking-[0.4em] text-white/40 uppercase">ЭСТЕТИЧЕСКАЯ МЕДИЦИНА</span>
             </div>
           </motion.div>
 
@@ -454,7 +454,7 @@ const App = () => {
             <div className="md:col-span-2 space-y-8 md:space-y-10">
               <div className="flex items-center gap-4 md:gap-6">
                 <img src="/images/logo-lion.png" alt="L.E.V. Logo" className="h-16 md:h-20 w-auto" />
-                <span className="font-serif text-2xl md:text-3xl tracking-[0.2em] md:tracking-[0.3em] gold-text-gradient font-bold uppercase">ЛЕВЧЕНКО КОСМЕТОЛОГИЯ</span>
+                <span className="font-serif text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] gold-text-gradient font-bold uppercase">ЛЕВЧЕНКО КОСМЕТОЛОГИЯ</span>
               </div>
               <p className="text-white/40 max-w-sm font-light text-sm">
                 Премиальное качество процедур и профессиональный подход в самом сердце города.
